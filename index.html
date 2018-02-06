@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>MUI TEST</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="./css/mui.css">
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css" />-->
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!-- 返回上一级页面 -->
+			<!-- <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a> -->
+			<h1 class="mui-title">首页</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab" id="nav">
+			<a class="mui-tab-item" id="index.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item"  id="category.html">
+				<span class="mui-icon mui-icon-navigate"></span>
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a class="mui-tab-item" id="info.html">
+				<span class="mui-icon mui-icon-info"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+	</body>
+	<script src="./js/mui.js"></script>
+	<script>
+		mui.init({
+            swipeBack: false,
+            statusBarBackground: '#f20000',
+            gestureConfig: {
+                doubletap: true
+            },
+            subpages: [{
+                id: 'home',
+                url: 'home.html',
+                styles: {
+                    top: '44px',
+                    bottom: '50px',
+                    background:'#ff0000',
+                    bounce: 'vertical',
+                    
+                }
+            }]
+        });
+        var nav = document.getElementById('nav').querySelectorAll('a');
+        for(var i = 0;i<nav.length;i++){
+            nav[i].addEventListener("tap",function(){
+                if(this.id !==''){
+                    mui.openWindow({
+                        url: this.id
+                    })
+                }
+            })
+        }
+	</script>
+
+</html>
